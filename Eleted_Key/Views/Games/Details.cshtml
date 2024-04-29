@@ -1,0 +1,26 @@
+﻿@model Eleted_Key.Models.Game
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalii joc - @Model.Name</title>
+    <link rel="stylesheet" href="~/css/styles.css"> 
+</head>
+<body>
+    <div class="container">
+        <h1>Detalii joc - @Model.Name</h1>
+        <div class="game-details">
+            <h2>@Model.Name</h2>
+            <img src="@Model.ImageUrl" alt="Imagine joc" style="max-width: 300px;" /> <!-- Afiseaza imaginea jocului -->
+            <p>@Model.Description</p>
+            <p>Preț: @Model.Price</p>
+            @if (!string.IsNullOrEmpty(Model.DemoUrl))
+            {
+                <p><a href="@Model.DemoUrl">Vezi demo</a></p> <!-- Adauga linkul pentru demo -->
+            }
+        </div>
+    </div>
+</body>
+</html>

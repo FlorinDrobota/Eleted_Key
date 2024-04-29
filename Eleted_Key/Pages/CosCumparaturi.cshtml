@@ -1,0 +1,110 @@
+﻿@page "/CosCumparaturi"
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coș de Cumpărături</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #0052D4, #4364F7, #6FB1FC, #8ED5F5, #A9E6FF, #83EAF1, #61E3D6, #3CDBC0, #00D084, #25E884, #3EFFF6, #5EFFF7, #84C3F7, #A75FFF, #D24BFF, #EF52FF);
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        th {
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .table {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-danger {
+            color: #fff;
+            background-color: #DC3545;
+            border-color: #DC3545;
+        }
+
+            .btn-danger:hover {
+                color: #fff;
+                background-color: #C82333;
+                border-color: #BD2130;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Coș de Cumpărături</h1>
+        <div class="cart-items">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Descriere</th>
+                        <th>Preț</th>
+                        <th>Imagine</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aici poți itera prin jocurile din coș și le afișezi -->
+                    <!-- Exemplu: -->
+                    <tr>
+                        <td>Spiderman</td>
+                        <td>Spiderman 2024</td>
+                        <td>200</td>
+                        <td>-</td>
+                        <td>
+                            <form class="remove-from-cart-form" action="/ShoppingCart/RemoveFromCart" method="post">
+                                <input type="hidden" name="gameId" value="id-joc-1" />
+                                <button type="submit" class="btn btn-danger">Elimină din Coș</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <!-- Poți adăuga mai multe rânduri pentru fiecare joc din coș -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Așteaptă ca documentul să se încarce complet
+        document.addEventListener("DOMContentLoaded", function () {
+            // Selectează toate formularele cu clasa "remove-from-cart-form"
+            var removeFromCartForms = document.querySelectorAll('.remove-from-cart-form');
+
+            // Pentru fiecare formular
+            removeFromCartForms.forEach(function (form) {
+                // Adaugă un eveniment pentru trimiterea formularului
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Oprire comportamentul implicit de trimitere a formularului
+
+                    var productName = form.parentNode.parentNode.children[0].textContent; // Obține numele produsului din prima coloană a tabelului
+
+                    // Afișează un mesaj de succes
+                    alert('Ai scos produsul "' + productName + '" din coșul de cumpărături!');
+                });
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

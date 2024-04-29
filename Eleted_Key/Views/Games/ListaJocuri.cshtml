@@ -1,0 +1,10 @@
+﻿@model List<Eleted_Key.Models.Game> // Specifică modelul pentru această vedere
+
+<h1>Lista Jocurilor</h1>
+
+<ul>
+    @foreach (var joc in Model)
+    {
+        <li>@joc.Name - @joc.Description</li> <!-- Afișează numele și descrierea jocului -->
+    }
+</ul>

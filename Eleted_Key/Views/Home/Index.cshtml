@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazin Online de Jocuri Video</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Stiluri pentru fundal */
+        body {
+            background: linear-gradient(to right, #1a1a1a, #000); /* Gradient de la negru la negru mai închis */
+            color: #fff; /* Culorează textul în alb */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; /* Setează un font generic */
+        }
+
+        /* Stiluri pentru bara de navigare */
+        .navbar {
+            background: linear-gradient(to right, #343a40, #1a1a1a); /* Gradient de la gri închis la negru */
+        }
+
+        .navbar-brand {
+            color: #fff; /* Culorează textul din bara de navigare în alb */
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff; /* Culorează linkurile din bara de navigare în alb */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #ccc; /* Schimbă culoarea linkurilor la hover */
+            }
+
+        /* Stiluri pentru secțiunea de prezentare a jocurilor */
+        .presentation-section {
+            padding: 100px 0; /* Margini interioare pentru a centra conținutul */
+            text-align: center; /* Aliniere centrală a textului */
+        }
+
+            .presentation-section h1 {
+                font-size: 48px; /* Mărimea fontului pentru titlu */
+                margin-bottom: 30px; /* Spațiu între titlu și textul de sub el */
+            }
+
+            .presentation-section p {
+                font-size: 18px; /* Mărimea fontului pentru text */
+                margin-bottom: 50px; /* Spațiu între text și butoanele de acțiune */
+            }
+
+        /* Stiluri pentru butoanele de acțiune */
+        .action-buttons {
+            margin-top: 30px; /* Spațiu între text și butoane */
+        }
+
+            .action-buttons .btn {
+                margin-right: 20px; /* Spațiu între butoane */
+            }
+
+            .action-buttons .btn-primary {
+                background: linear-gradient(to right, #007bff, #1a1a1a); /* Gradient de la albastru la negru */
+                border: none; /* Elimină conturul butonului */
+            }
+
+                .action-buttons .btn-primary:hover {
+                    background: linear-gradient(to right, #1a1a1a, #007bff); /* Inversarea gradientului la hover */
+                }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">EletedKey</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Acasă</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/CosCumparaturi">Coș Cumpărături</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Users">Useri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Contact">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="Identity/Account/Login">Login</a>
+                            <a class="dropdown-item" href="Identity/Account/Register">Register</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="presentation-section">
+            <h1>Descoperă cele mai recente jocuri video!</h1>
+            <p>Exploră colecția noastră vastă de jocuri video și bucură-te de cele mai noi lansări și experiențe de joc captivante.</p>
+            <div class="action-buttons">
+                <a href="#" class="btn btn-primary">Cumpără acum</a>
+                <a href="#" class="btn btn-outline-light">Află mai multe</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
