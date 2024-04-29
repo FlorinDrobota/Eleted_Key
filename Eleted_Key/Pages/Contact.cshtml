@@ -1,0 +1,44 @@
+﻿@page "/Contact"
+@model Eleted_Key.Pages.ContactModel
+@{
+    ViewData["Title"] = "Support";
+}
+
+<h1>Support</h1>
+
+<!-- Paragraf cu termeni și condiții -->
+<p>By using our support services, you agree to our terms and conditions.</p>
+
+<!-- Formular pentru a trimite un email cu probleme întâmpinate -->
+<form method="post">
+    <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" name="contactNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Send Message</button>
+</form>
+
+<!-- Sectiune pentru LiveChat -->
+<h2>LiveChat</h2>
+<p>Click below to start a LiveChat session with one of our support agents.</p>
+<button class="btn btn-success">Start LiveChat</button>
+
+<!-- Sectiune cu contact numbers fictive -->
+<h2>Contact Numbers</h2>
+<ul>
+    <li>Customer Support: 123-456-7890</li>
+    <li>Technical Support: 987-654-3210</li>
+</ul>
+

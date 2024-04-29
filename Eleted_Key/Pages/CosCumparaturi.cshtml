@@ -1,0 +1,72 @@
+﻿@page "/CosCumparaturi"
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coș de Cumpărături</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Coș de Cumpărături</h1>
+        <div class="cart-items">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Descriere</th>
+                        <th>Preț</th>
+                        <th>Imagine</th>
+                        <th>Acțiuni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Aici poți itera prin jocurile din coș și le afișezi -->
+                    <!-- Exemplu: -->
+                    <tr>
+                        <td>Spiderman</td>
+                        <td>Spiderman 2024</td>
+                        <td>200</td>
+                        <td>-</td>
+                        <td>
+                            <form class="remove-from-cart-form" action="/ShoppingCart/RemoveFromCart" method="post">
+                                <input type="hidden" name="gameId" value="id-joc-1" />
+                                <button type="submit" class="btn btn-danger">Elimină din Coș</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <!-- Poți adăuga mai multe rânduri pentru fiecare joc din coș -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Așteaptă ca documentul să se încarce complet
+        document.addEventListener("DOMContentLoaded", function () {
+            // Selectează toate formularele cu clasa "remove-from-cart-form"
+            var removeFromCartForms = document.querySelectorAll('.remove-from-cart-form');
+
+            // Pentru fiecare formular
+            removeFromCartForms.forEach(function (form) {
+                // Adaugă un eveniment pentru trimiterea formularului
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); // Oprire comportamentul implicit de trimitere a formularului
+
+                    var productName = form.parentNode.parentNode.children[0].textContent; // Obține numele produsului din prima coloană a tabelului
+
+                    // Afișează un mesaj de succes
+                    alert('Ai scos produsul "' + productName + '" din coșul de cumpărături!');
+                });
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

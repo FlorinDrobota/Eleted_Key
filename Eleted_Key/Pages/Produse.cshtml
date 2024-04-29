@@ -1,0 +1,18 @@
+﻿@page "/Produse"
+@model List<Eleted_Key.Models.Game>
+
+@{
+    ViewData["Title"] = "Produse";
+}
+
+<h1>Produse</h1>
+
+<div class="row">
+    <ul>
+        @foreach (var joc in Model)
+        {
+            <li>@joc.Name - @joc.Description</li> <!-- Afișează numele și descrierea jocului -->
+        }
+    </ul>
+</div>
+

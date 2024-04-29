@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Eleted_Key.Models.Game>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazin Online de Jocuri Video</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Stilizare pentru imaginea de fundal */
+        body {
+            background-color: #1a1a1a; /* Albastru spre negru, mat */
+            color: #fff; /* Culorează textul în alb */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Stilizare pentru bara de navigare */
+        .navbar {
+            background-color: #343a40; /* Culorează bara de navigare într-un gri închis */
+        }
+
+        .navbar-brand {
+            color: #fff; /* Culorează textul din bara de navigare în alb */
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff; /* Culorează linkurile din bara de navigare în alb */
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #ccc; /* Schimbă culoarea linkurilor la hover */
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">EletedKey</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Acasă</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/CosCumparaturi">Coș Cumpărături</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Users">Useri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Contact">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="Identity/Account/Login">Login</a>
+                            <a class="dropdown-item" href="Identity/Account/Register">Register</a>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="mt-5 mb-4">Magazin Online de Jocuri Video</h1>
+        <div class="game-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Descriere</th>
+                        <th>Preț</th>
+                        <th>Imagine</th>
+                        <th>URL Demo</th>
+                        <th></th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var game in Model)
+                    {
+                        <tr>
+                            <td>@game.Name</td>
+                            <td>@game.Description</td>
+                            <td>@game.Price</td>
+                            <td>@game.ImageUrl</td>
+                            <td>@game.DemoUrl</td>
+                            <td>
+                                <form class="add-to-cart-form" data-game-name="@game.Name">
+                                    <input type="hidden" name="gameId" value="@game.Id" /> 
+                                    <button type="submit" class="btn btn-primary">Adaugă în Coș</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var addToCartForms = document.querySelectorAll('.add-to-cart-form');           
+            addToCartForms.forEach(function (form) {
+                
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); 
+
+                    var gameName = form.getAttribute('data-game-name');
+                    alert('Ai adăugat cu succes produsul "' + gameName + '" în coșul de cumpărături!');
+                });
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
