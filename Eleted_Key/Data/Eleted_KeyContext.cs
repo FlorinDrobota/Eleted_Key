@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Eleted_Key.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Eleted_Key.Controllers.Models;
+using Eleted_Key.Models;
 
 namespace Eleted_Key.Data
 {
@@ -16,7 +17,7 @@ namespace Eleted_Key.Data
         {
         }
 
-        public DbSet<Eleted_Key.Models.Game> Game { get; set; } = default!;
+        public DbSet<Game> Game { get; set; } = default!;
 
 
 

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Eleted_Key.Models.Game>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +8,22 @@
     <title>Magazin Online de Jocuri Video</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background: linear-gradient(to right, #1a1a1a, #010); 
+            color: #fff; 
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif; 
+        }
+        .navbar {
+            background-color: #343a40; /* Culorează bara de navigare într-un gri închis */
         /* Stiluri pentru fundal */
         body {
             background: linear-gradient(to right, #1a1a1a, #000); /* Gradient de la negru la negru mai închis */
             color: #fff; /* Culorează textul în alb */
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif; /* Setează un font generic */
+            font-family: Arial, sans-serif; 
         }
 
         /* Stiluri pentru bara de navigare */
@@ -97,8 +108,16 @@
                             Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="Identity/Account/Login">Login</a>
-                            <a class="dropdown-item" href="Identity/Account/Register">Register</a>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a class="dropdown-item" href="Identity/Account/Manage/Index">Profil</a>
+                                <a class="dropdown-item" href="Identity/Account/Logout">Logout</a>
+                            }
+                            else
+                            {
+                                <a class="dropdown-item" href="Identity/Account/Login">Login</a>
+                                <a class="dropdown-item" href="Identity/Account/Register">Register</a>
+                            }
                         </div>
                     </li>
                 </ul>
@@ -107,6 +126,53 @@
     </nav>
 
     <div class="container">
+        <h1 class="mt-5 mb-4">Magazin Online de Jocuri Video</h1>
+        <div class="game-list">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Descriere</th>
+                        <th>Preț</th>
+                        <th>Imagine</th>
+                        <th>URL Demo</th>
+                        <th></th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var game in Model)
+                    {
+                        <tr>
+                            <td>@game.Name</td>
+                            <td>@game.Description</td>
+                            <td>@game.Price</td>
+                            <td>@game.ImageUrl</td>
+                            <td>@game.DemoUrl</td>
+                            <td>
+                                <form class="add-to-cart-form" data-game-name="@game.Name">
+                                    <input type="hidden" name="gameId" value="@game.Id" /> 
+                                    <button type="submit" class="btn btn-primary">Adaugă în Coș</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var addToCartForms = document.querySelectorAll('.add-to-cart-form');
+            addToCartForms.forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    var gameName = form.getAttribute('data-game-name');
+                    alert('Ai adăugat cu succes produsul "' + gameName + '" în coșul de cumpărături!');
+                });
+            });
+        });
+    </script>
         <div class="presentation-section">
             <h1>Descoperă cele mai recente jocuri video!</h1>
             <p>Exploră colecția noastră vastă de jocuri video și bucură-te de cele mai noi lansări și experiențe de joc captivante.</p>
@@ -115,8 +181,6 @@
                 <a href="#" class="btn btn-outline-light">Află mai multe</a>
             </div>
         </div>
-    </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -27,7 +27,9 @@ namespace Eleted_Key.Areas.Identity.Pages.Account
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private IUserEmailStore<IdentityUser> _userStore;
+        private readonly IUserEmailStore<IdentityUser> userStore;
+        private readonly IUserEmailStore<IdentityUser> _userStore;
+        private readonly IUserEmailStore<IdentityUser> _emailStore;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -36,6 +38,8 @@ namespace Eleted_Key.Areas.Identity.Pages.Account
             IEmailSender emailSender)
         {
             _userManager = userManager;
+            _userStore = userStore;
+            _emailStore = GetEmailStore();
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
@@ -108,8 +112,8 @@ namespace Eleted_Key.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
-                var result = await _userManager.CreateAsync((ApplicationUser)user, Input.Password);
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                IdentityResult result = await _userManager.CreateAsync((ApplicationUser)user, Input.Password);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

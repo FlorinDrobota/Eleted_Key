@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Eleted_Key.Data;
+using Eleted_Key.Controllers.Models;
 using Eleted_Key.Models;
 
 namespace Eleted_Key.Controllers

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Eleted_Key.Data;
+using Eleted_Key.Controllers.Models;
 using Eleted_Key.Models;
 
 namespace Eleted_Key.Controllers
@@ -158,6 +159,13 @@ namespace Eleted_Key.Controllers
         private bool GameExists(int id)
         {
           return (_context.Game?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllGames()
+        {
+            var games = await _context.Game.ToListAsync();
+            return Json(games);
         }
     }
 }

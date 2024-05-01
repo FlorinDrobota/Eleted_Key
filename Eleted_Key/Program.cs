@@ -25,14 +25,20 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 builder.Services.AddScoped<UserManager<ApplicationUser>>();
 builder.Services.AddScoped<SignInManager<ApplicationUser>>();
 
+
+// Adăugarea serviciului pentru controller-e
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<UserManager<ApplicationUser>>();
 
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 
+// Adăugarea serviciului pentru paginile Razor
 builder.Services.AddRazorPages();
+
 
 var app = builder.Build();
 
+// Configurarea pipeline-ului HTTP
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -41,10 +47,13 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Configurarea rutelor pentru controller-e și pagini Razor
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

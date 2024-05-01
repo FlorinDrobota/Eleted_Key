@@ -22,8 +22,14 @@ namespace Eleted_Key.Controllers
         public async Task<IActionResult> Index()
         {
             var games = await _context.Game.ToListAsync();
+            if (games == null || !games.Any())
+            {
+                Console.WriteLine("Nu s-au găsit jocuri în baza de date.");
+            }
             return View(games);
         }
+
+
 
         public IActionResult Privacy()
         {
