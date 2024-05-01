@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Eleted_Key.Models.Game>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -101,6 +103,7 @@
                             <a class="dropdown-item" href="Identity/Account/Register">Register</a>
                         </div>
                     </li>
+
                 </ul>
             </div>
         </div>
@@ -116,6 +119,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var addToCartForms = document.querySelectorAll('.add-to-cart-form');           
+            addToCartForms.forEach(function (form) {
+                
+                form.addEventListener('submit', function (event) {
+                    event.preventDefault(); 
+
+                    var gameName = form.getAttribute('data-game-name');
+                    alert('Ai adăugat cu succes produsul "' + gameName + '" în coșul de cumpărături!');
+                });
+            });
+        });
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
